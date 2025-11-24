@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addiction Free - Your Recovery Journey</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div>
+                    <h1>💪 Addiction Free</h1>
+                    <p class="subtitle">Your personal recovery companion</p>
+                </div>
+                <div class="profile-selector-wrapper">
+                    <label for="profile-select" class="profile-label">Profile:</label>
+                    <select id="profile-select" class="profile-select">
+                        <option value="">Select Profile...</option>
+                    </select>
+                    <button class="profile-btn" id="manage-profiles-btn" title="Manage Profiles">⚙️</button>
+                </div>
+            </div>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+            <button class="tab-btn" data-tab="checkin">Daily Check-in</button>
+            <button class="tab-btn" data-tab="cravings">Cravings Log</button>
+            <button class="tab-btn" data-tab="goals">Goals</button>
+            <button class="tab-btn" data-tab="motivation">Motivation</button>
+            <button class="tab-btn" data-tab="profiles">Profiles</button>
+        </nav>
+
+        <!-- Dashboard Tab -->
+        <section id="dashboard" class="tab-content active">
+            <div class="stats-grid">
+                <div class="stat-card primary">
+                    <div class="stat-number" id="days-sober">0</div>
+                    <div class="stat-label">Days Sober</div>
+                </div>
+                <div class="stat-card secondary">
+                    <div class="stat-number" id="current-streak">0</div>
+                    <div class="stat-label">Day Streak</div>
+                </div>
+                <div class="stat-card accent">
+                    <div class="stat-number" id="cravings-today">0</div>
+                    <div class="stat-label">Cravings Today</div>
+                </div>
+            </div>
+
+            <div class="welcome-section">
+                <h2>Welcome back! 👋</h2>
+                <p id="welcome-message">You're doing great! Keep going, one day at a time.</p>
+            </div>
+
+            <div class="progress-section">
+                <h3>Your Progress</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <p class="progress-text" id="progress-text">Starting your journey...</p>
+            </div>
+
+            <div class="quick-actions">
+                <button class="action-btn" id="quick-checkin-btn">Quick Check-in</button>
+                <button class="action-btn secondary" id="log-craving-btn">Log Craving</button>
+            </div>
+
+            <div class="recent-activity">
+                <h3>Recent Activity</h3>
+                <div id="recent-activity-list" class="activity-list">
+                    <p class="empty-state">No activity yet. Start by completing your daily check-in!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Check-in Tab -->
+        <section id="checkin" class="tab-content">
+            <div class="checkin-form">
+                <h2>Daily Check-in</h2>
+                <p class="form-subtitle">How are you feeling today?</p>
+
+                <div class="form-group">
+                    <label>Mood Today</label>
+                    <div class="mood-selector">
+                        <button class="mood-btn" data-mood="great">😊 Great</button>
+                        <button class="mood-btn" data-mood="good">🙂 Good</button>
+                        <button class="mood-btn" data-mood="okay">😐 Okay</button>
+                        <button class="mood-btn" data-mood="tough">😔 Tough</button>
+                        <button class="mood-btn" data-mood="difficult">😰 Difficult</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Did you experience cravings today?</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="cravings" value="none"> None</label>
+                        <label><input type="radio" name="cravings" value="few"> A few</label>
+                        <label><input type="radio" name="cravings" value="many"> Many</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Energy Level</label>
+                    <input type="range" id="energy-level" min="1" max="10" value="5" class="slider">
+                    <div class="slider-labels">
+                        <span>Low</span>
+                        <span id="energy-value">5</span>
+                        <span>High</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>What's one thing you're grateful for today?</label>
+                    <textarea id="gratitude" rows="3" placeholder="Share something positive..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Any notes or reflections?</label>
+                    <textarea id="notes" rows="4" placeholder="How did your day go? What worked well?"></textarea>
+                </div>
+
+                <button class="submit-btn" id="submit-checkin">Submit Check-in</button>
+            </div>
+        </section>
+
+        <!-- Cravings Log Tab -->
+        <section id="cravings" class="tab-content">
+            <div class="cravings-section">
+                <h2>Log a Craving</h2>
+                <p class="form-subtitle">Track your cravings to identify patterns</p>
+
+                <div class="form-group">
+                    <label>Intensity</label>
+                    <input type="range" id="craving-intensity" min="1" max="10" value="5" class="slider">
+                    <div class="slider-labels">
+                        <span>Mild</span>
+                        <span id="intensity-value">5</span>
+                        <span>Intense</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Trigger</label>
+                    <select id="trigger-select">
+                        <option value="">Select a trigger...</option>
+                        <option value="stress">Stress</option>
+                        <option value="boredom">Boredom</option>
+                        <option value="social">Social Situation</option>
+                        <option value="emotional">Emotional State</option>
+                        <option value="habit">Habit/Time of Day</option>
+                        <option value="environment">Environment/Location</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>How did you handle it?</label>
+                    <select id="coping-strategy">
+                        <option value="">How did you cope?</option>
+                        <option value="distraction">Distraction Activity</option>
+                        <option value="breathing">Deep Breathing</option>
+                        <option value="exercise">Exercise</option>
+                        <option value="support">Talked to Someone</option>
+                        <option value="reminder">Remembered Goals</option>
+                        <option value="other">Other Strategy</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Notes</label>
+                    <textarea id="craving-notes" rows="3" placeholder="What happened? How did you feel?"></textarea>
+                </div>
+
+                <button class="submit-btn" id="submit-craving">Log Craving</button>
+
+                <div class="cravings-history">
+                    <h3>Recent Cravings</h3>
+                    <div id="cravings-list" class="cravings-list">
+                        <p class="empty-state">No cravings logged yet.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Goals Tab -->
+        <section id="goals" class="tab-content">
+            <div class="goals-section">
+                <h2>Your Goals</h2>
+                <p class="form-subtitle">Set and track your recovery milestones</p>
+
+                <div class="goal-form">
+                    <div class="form-group">
+                        <label>Goal Name</label>
+                        <input type="text" id="goal-name" placeholder="e.g., 30 days sober">
+                    </div>
+                    <div class="form-group">
+                        <label>Target Date (Days from now)</label>
+                        <input type="number" id="goal-days" min="1" placeholder="30">
+                    </div>
+                    <button class="submit-btn" id="add-goal-btn">Add Goal</button>
+                </div>
+
+                <div class="goals-list" id="goals-list">
+                    <p class="empty-state">No goals set yet. Add your first goal above!</p>
+                </div>
+
+                <div class="milestones">
+                    <h3>Milestone Achievements 🏆</h3>
+                    <div id="milestones-list" class="milestones-grid">
+                        <!-- Milestones will be dynamically generated -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Motivation Tab -->
+        <section id="motivation" class="tab-content">
+            <div class="motivation-section">
+                <h2>Stay Motivated 💪</h2>
+                
+                <div class="quote-card">
+                    <p id="daily-quote" class="quote-text">Loading your daily inspiration...</p>
+                    <button class="refresh-btn" id="refresh-quote">🔄 New Quote</button>
+                </div>
+
+                <div class="achievements">
+                    <h3>Your Achievements</h3>
+                    <div id="achievements-list" class="achievements-grid">
+                        <!-- Achievements will be dynamically generated -->
+                    </div>
+                </div>
+
+                <div class="coping-strategies">
+                    <h3>When You Feel a Craving</h3>
+                    <div class="strategy-cards">
+                        <div class="strategy-card">
+                            <h4>🌬️ Deep Breathing</h4>
+                            <p>Take 5 deep breaths. Inhale for 4 counts, hold for 4, exhale for 4.</p>
+                        </div>
+                        <div class="strategy-card">
+                            <h4>🚶 Go for a Walk</h4>
+                            <p>Physical movement helps reset your mind. Even 5 minutes helps.</p>
+                        </div>
+                        <div class="strategy-card">
+                            <h4>💧 Drink Water</h4>
+                            <p>Stay hydrated. Sometimes cravings are disguised thirst.</p>
+                        </div>
+                        <div class="strategy-card">
+                            <h4>📞 Call Someone</h4>
+                            <p>Reach out to a friend, family member, or support person.</p>
+                        </div>
+                        <div class="strategy-card">
+                            <h4>🧘 Mindfulness</h4>
+                            <p>Take a moment to observe the craving without judgment. It will pass.</p>
+                        </div>
+                        <div class="strategy-card">
+                            <h4>📝 Write It Down</h4>
+                            <p>Journal about what you're feeling. Understanding helps overcome.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profiles Tab -->
+        <section id="profiles" class="tab-content">
+            <div class="profiles-section">
+                <h2>Profile Management</h2>
+                <p class="form-subtitle">Create and manage different user profiles, each with their own recovery journey</p>
+
+                <div class="profile-form">
+                    <h3>Create New Profile</h3>
+                    <div class="form-group">
+                        <label>Profile Name</label>
+                        <input type="text" id="new-profile-name" placeholder="Enter profile name (e.g., John, Jane, etc.)">
+                    </div>
+                    <button class="submit-btn" id="create-profile-btn">Create Profile</button>
+                </div>
+
+                <div class="profiles-list-section">
+                    <h3>Your Profiles</h3>
+                    <div id="profiles-list" class="profiles-list">
+                        <p class="empty-state">No profiles yet. Create your first profile above!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Profile Modal -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Manage Profile: <span id="modal-profile-name"></span></h2>
+            <div class="modal-actions">
+                <button class="modal-btn switch-btn" id="switch-profile-btn">Switch to This Profile</button>
+                <button class="modal-btn delete-btn" id="delete-profile-btn">Delete Profile</button>
+                <button class="modal-btn cancel-btn" id="cancel-modal-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+
