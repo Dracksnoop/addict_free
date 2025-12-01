@@ -15,7 +15,7 @@
 
 ---
 
-## 📖 Table of Contents
+## 📖 Table of Content
 
 - [About](#-about)
 - [Demo](#-demo)
